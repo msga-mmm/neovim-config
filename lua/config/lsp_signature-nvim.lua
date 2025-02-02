@@ -1,5 +1,0 @@
--- require("lsp_signature").setup({
--- 	hint_prefix = "",
--- 	toggle_key = "<C-s>",
--- 	timer_interval = 300,
--- })

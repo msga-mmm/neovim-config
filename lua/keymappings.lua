@@ -50,7 +50,7 @@ map("n", "<C-k>", 'call WinMove("k")')
 map("n", "<C-l>", 'call WinMove("l")')
 
 -- QuickFixer (diagnostic)
-map("n", "<leader>xx", "TroubleToggle", opts)
+-- map("n", "<leader>xx", "TroubleToggle", opts)
 
 map("n", "<A-w>", "w")
 map("n", "<A-S-w>", "w!")
@@ -78,7 +78,7 @@ base_map("v", "<A-t>", '!column -t -o" "<CR>')
 base_map("v", "<A-s>", "!sort<CR>")
 
 -- Outline
-map("n", "<Space>o", "SymbolsOutline")
+map("n", "<Space>o", "AerialToggle")
 
 -- Fuzzy Finder - Telescope
 -- h telescope.builtin (find_files)
