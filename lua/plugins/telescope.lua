@@ -14,6 +14,16 @@ return {
                         height = 0.98,
                         width = 0.95,
                     },
+                    vimgrep_arguments = {
+                        "rg",
+                        "--color=never",
+                        "--no-heading",
+                        "--with-filename",
+                        "--line-number",
+                        "--column",
+                        "--smart-case",
+                    },
+                    file_ignore_patterns = {},
                 },
                 extensions = {
                     live_grep_args = {
@@ -24,6 +34,12 @@ return {
                                 ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
                             },
                         },
+                    },
+                },
+                pickers = {
+                    find_files = {
+                        hidden = true,
+                        find_command = { "fd", "--type", "f", "--hidden", "--exclude", ".git" },
                     },
                 },
             })
@@ -44,6 +60,6 @@ return {
         "nvim-telescope/telescope-live-grep-args.nvim",
     },
     {
-        "ahmedkhalf/project.nvim"
-    }
+        "ahmedkhalf/project.nvim",
+    },
 }

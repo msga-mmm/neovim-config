@@ -84,11 +84,15 @@ map("n", "<Space>o", "AerialToggle")
 -- h telescope.builtin (find_files)
 -- map("n", "<A-f>", "lua require('telescope.builtin').find_files({hidden=true})")
 -- map("n", "<A-f>", "lua require('telescope.builtin').find_files({hidden=true, path_display={\"truncate\"}})")
-map("n", "<A-f>", "Telescope find_files hidden=true")
+map("n", "<A-f>", "Telescope find_files")
 map("n", "<A-g>", "Telescope grep_string")
 
 -- base_map("n", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
-base_map("n", "<Space>l", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
+map(
+    "n",
+    "<Space>l",
+    "lua require('telescope').extensions.live_grep_args.live_grep_args({ additional_args = function() return { '--hidden', '--glob', '!.git/' } end })"
+)
 -- map("n", "<Space>l", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 -- map("n", "<Space>l", "Telescope live_grep")
 
@@ -121,9 +125,6 @@ map("n", "gd", "lua vim.lsp.buf.definition()", opts)
 map("n", "gD", "lua vim.lsp.buf.declaration()", opts)
 map("n", "gr", ":Telescope lsp_references", opts)
 
-
-
-
 -- rename
 map("n", "gR", "lua vim.lsp.buf.rename()", opts)
 
@@ -138,9 +139,6 @@ map("n", "gl", 'lua vim.diagnostic.open_float({ show_header = false, border = "s
 
 -- show function/classs signature
 map("n", "<C-s>", "lua vim.lsp.buf.signature_help()", opts)
-
-
-
 
 -- diff viewer
 map("n", "<leader>do", "DiffviewOpen", opts)
