@@ -31,7 +31,7 @@ return {
         end,
     },
     {
-        "jose-elias-alvarez/null-ls.nvim",
+        "nvimtools/none-ls.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
         config = function()
             local null_ls = require("null-ls")
@@ -43,17 +43,22 @@ return {
                     -- lua
 
                     null_ls.builtins.formatting.stylua,
-                    null_ls.builtins.code_actions.eslint_d,
+
+                    -- TODO: commented because it fails to be loaded with none-ls
+                    -- null_ls.builtins.code_actions.eslint_d,
+
                     null_ls.builtins.formatting.prettierd,
                     null_ls.builtins.formatting.black,
 
                     null_ls.builtins.diagnostics.tidy,
-                    null_ls.builtins.formatting.jq.with({
-                        extra_args = {
-                            "--indent",
-                            "4",
-                        },
-                    }),
+
+                    -- TODO: commented because it fails to be loaded with none-ls
+                    -- null_ls.builtins.formatting.jq.with({
+                    --     extra_args = {
+                    --         "--indent",
+                    --         "4",
+                    --     },
+                    -- }),
 
                     null_ls.builtins.formatting.yamlfmt,
                 },
