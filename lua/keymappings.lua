@@ -84,11 +84,12 @@ map("n", "<Space>o", "AerialToggle")
 -- h telescope.builtin (find_files)
 -- map("n", "<A-f>", "lua require('telescope.builtin').find_files({hidden=true})")
 -- map("n", "<A-f>", "lua require('telescope.builtin').find_files({hidden=true, path_display={\"truncate\"}})")
-map("n", "<A-f>", "Telescope find_files")
+map("n", "<A-f>", "Telescope find_files hidden=true")
 map("n", "<A-g>", "Telescope grep_string")
 
 -- base_map("n", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 base_map("n", "<Space>l", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
+-- map("n", "<Space>l", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 -- map("n", "<Space>l", "Telescope live_grep")
 
 map("n", "<Space>j", "Telescope oldfiles")
