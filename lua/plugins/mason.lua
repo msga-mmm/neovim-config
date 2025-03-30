@@ -19,7 +19,7 @@ return {
     },
     {
         "neovim/nvim-lspconfig",
-        opts = {}
+        opts = {},
     },
     {
         "jay-babu/mason-null-ls.nvim",
@@ -32,9 +32,14 @@ return {
     },
     {
         "nvimtools/none-ls.nvim",
-        dependencies = { "nvim-lua/plenary.nvim" },
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "davidmh/cspell.nvim",
+        },
         config = function()
             local null_ls = require("null-ls")
+            local cspell = require("cspell")
+
             require("null-ls").setup({
                 sources = {
                     -- general
@@ -61,6 +66,13 @@ return {
                     -- }),
 
                     null_ls.builtins.formatting.yamlfmt,
+
+                    cspell.diagnostics.with({
+                        diagnostics_postprocess = function(diagnostic)
+                            diagnostic.severity = vim.diagnostic.severity.HINT
+                        end,
+                    }),
+                    cspell.code_actions,
                 },
             })
         end,
