@@ -6,21 +6,6 @@ local silent = { silent = true }
 
 vim.g.mapleader = "\\"
 
-vim.cmd([[
-    function! WinMove(key)
-        let t:curwin = winnr()
-        exec "wincmd ".a:key
-        if (t:curwin == winnr())
-            if (match(a:key,'[jk]'))
-                wincmd v
-            else
-                wincmd s
-            endif
-            exec "wincmd ".a:key
-        endif
-    endfunction
-]])
-
 -- shortcut to close all buffers without exiting,
 -- useful to swtich between sessions in neovim to
 -- avoid tabs/buffers bleeding into the next session
@@ -44,6 +29,20 @@ map("n", "<A-o>", "lua vim.lsp.buf.format({ async = true })")
 base_map("n", "<Space>,", 'mzggVG=ggVG"+y`z')
 
 -- Fast splitting & window movement
+vim.cmd([[
+    function! WinMove(key)
+        let t:curwin = winnr()
+        exec "wincmd ".a:key
+        if (t:curwin == winnr())
+            if (match(a:key,'[jk]'))
+                wincmd v
+            else
+                wincmd s
+            endif
+            exec "wincmd ".a:key
+        endif
+    endfunction
+]])
 map("n", "<C-h>", 'call WinMove("h")')
 map("n", "<C-j>", 'call WinMove("j")')
 map("n", "<C-k>", 'call WinMove("k")')
