@@ -1,3 +1,3 @@
 return {
-    "sigmasd/deno-nvim",
+    -- "sigmasd/deno-nvim",
 }

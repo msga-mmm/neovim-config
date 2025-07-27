@@ -6,7 +6,21 @@ return {
             "nvim-lua/plenary.nvim",
         },
         config = function()
+            local actions = require("telescope.actions")
+            local action_state = require("telescope.actions.state")
+            local action_set = require("telescope.actions.set")
             local lga_actions = require("telescope-live-grep-args.actions")
+
+            -- Custom action to open file in new tab without closing Telescope
+            local function open_in_tab_keep_picker(prompt_bufnr)
+                local entry = action_state.get_selected_entry()
+                local filename = entry.path or entry.filename
+                actions.close(prompt_bufnr) -- close picker briefly to avoid redraw glitches
+                vim.cmd("tabnew " .. vim.fn.fnameescape(filename))
+                -- reopen the picker (you can adjust which one here)
+                require("telescope.builtin").find_files()
+            end
+
             require("telescope").setup({
                 defaults = {
                     path_display = { "truncate" },
@@ -24,6 +38,14 @@ return {
                         "--smart-case",
                     },
                     file_ignore_patterns = {},
+                    mappings = {
+                        i = {
+                            ["<C-q>"] = open_in_tab_keep_picker, -- change to your preferred key
+                        },
+                        n = {
+                            ["<C-q>"] = open_in_tab_keep_picker,
+                        },
+                    },
                 },
                 extensions = {
                     live_grep_args = {
