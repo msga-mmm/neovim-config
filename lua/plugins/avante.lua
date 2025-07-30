@@ -12,6 +12,12 @@ return {
             gemini = {
                 model = "gemini-2.5-flash-preview-05-20",
             },
+            deepinfra = {
+                __inherited_from = "openai",
+                endpoint = "https://api.deepinfra.com/v1/openai",
+                api_key_name = "DEEPINFRA_API_KEY",
+                model = "deepseek-ai/DeepSeek-V3-0324"
+            },
         },
 
         dual_boost = {

@@ -49,7 +49,10 @@ return {
                     -- TODO: commented because it fails to be loaded with none-ls
                     -- null_ls.builtins.code_actions.eslint_d,
 
-                    null_ls.builtins.formatting.prettierd,
+                    -- TODO: commented because the styles issues are not
+                    -- necessary to be shown inline while coding since they can
+                    -- be fixed by running prettier in all the files
+                    -- null_ls.builtins.formatting.prettierd,
                     null_ls.builtins.formatting.black,
 
                     null_ls.builtins.diagnostics.tidy,
