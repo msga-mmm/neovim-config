@@ -15,7 +15,6 @@ return {
             -- Double space between (), [], {}
             -- result: ( | )
             Rule(" ", " "):with_pair(function(opts)
-                print(opts.line)
                 local pair = opts.line:sub(opts.col - 1, opts.col)
                 return vim.tbl_contains({ "()", "[]", "{}" }, pair)
             end),
