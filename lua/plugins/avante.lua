@@ -16,7 +16,8 @@ return {
                 __inherited_from = "openai",
                 endpoint = "https://api.deepinfra.com/v1/openai",
                 api_key_name = "DEEPINFRA_API_KEY",
-                model = "deepseek-ai/DeepSeek-V3-0324"
+                -- model = "deepseek-ai/DeepSeek-V3-0324"
+                model = "Qwen/Qwen3-Coder-480B-A35B-Instruct",
             },
         },
 
@@ -180,6 +181,27 @@ return {
         --     debounce = 600,
         --     throttle = 600,
         -- },
+
+        -- NOTE: this requires environment variable: TAVILY_API_KEY
+        -- documentation: https://github.com/yetone/avante.nvim/blob/be0937a459624ce1170f158f9d8660d0ade47eb4/README.md#L1133
+        web_search_engine = {
+            provider = "tavily", -- tavily, serpapi, google, kagi, brave, or searxng
+            proxy = nil, -- proxy support, e.g., http://127.0.0.1:7890
+        },
+
+        -- rules = {
+        --     project_dir = ".avante/rules", -- relative to project root, can also be an absolute path
+        --     global_dir = "~/.config/avante/rules", -- absolute path
+        -- },
+
+        shortcuts = {
+            {
+                name = "commit",
+                description = "Create Git commit following conventional commits",
+                details = "Generate a descriptive Git commit message that follows the Conventional Commits specification, based on the recent changes in the code.",
+                prompt = "Please generate a Git commit message following the Conventional Commits specification, describing the recent changes clearly and concisely.",
+            },
+        },
     },
 
     -- opts = {

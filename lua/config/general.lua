@@ -74,3 +74,7 @@ vim.cmd([[
 ]])
 
 require("gitlinker").setup()
+
+-- views can only be fully collapsed with the global statusline
+-- documentation: https://github.com/yetone/avante.nvim/blob/be0937a459624ce1170f158f9d8660d0ade47eb4/README.md#L331-L336
+-- vim.opt.laststatus = 3
