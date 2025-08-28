@@ -1,3 +1,11 @@
+local function read_file(path)
+    local f = io.open(path, "r")
+    if not f then return nil end
+    local content = f:read("*all")
+    f:close()
+    return content
+end
+
 return {
     "yetone/avante.nvim",
     event = "VeryLazy",
@@ -193,6 +201,12 @@ return {
         --     project_dir = ".avante/rules", -- relative to project root, can also be an absolute path
         --     global_dir = "~/.config/avante/rules", -- absolute path
         -- },
+
+        system_prompt = function ()
+            local prompt_path = debug.getinfo(1, "S").source:sub(2):match("(.*/)")
+            local system_prompt = read_file(prompt_path .. "./prompts/system_prompt.md")
+            return system_prompt
+        end,
 
         shortcuts = {
             {
