@@ -1,6 +1,8 @@
 local function read_file(path)
     local f = io.open(path, "r")
-    if not f then return nil end
+    if not f then
+        return nil
+    end
     local content = f:read("*all")
     f:close()
     return content
@@ -202,7 +204,7 @@ return {
         --     global_dir = "~/.config/avante/rules", -- absolute path
         -- },
 
-        system_prompt = function ()
+        system_prompt = function()
             local prompt_path = debug.getinfo(1, "S").source:sub(2):match("(.*/)")
             local system_prompt = read_file(prompt_path .. "./prompts/system_prompt.md")
             return system_prompt
@@ -214,6 +216,12 @@ return {
                 description = "Create Git commit following conventional commits",
                 details = "Generate a descriptive Git commit message that follows the Conventional Commits specification, based on the recent changes in the code.",
                 prompt = "Please generate a Git commit message following the Conventional Commits specification, describing the recent changes clearly and concisely.",
+            },
+            {
+                name = "review",
+                description = "Review current branch against main for good practices, edge cases, and vulnerabilities",
+                details = "Perform a comprehensive code review of the current branch compared to the `main` branch. Focus on identifying areas that violate good practices (language, framework, and package specific), potential edge cases, unhandled errors, possible bugs, and critical security vulnerabilities.",
+                prompt = "Please conduct a thorough code review of the current branch against the `main` branch. Identify any deviations from good practices for the specific language, framework, and packages used. Highlight potential edge cases, unhandled errors, possible bugs, and critical security vulnerabilities. Provide actionable suggestions for improvement.",
             },
         },
     },

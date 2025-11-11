@@ -107,8 +107,6 @@ return {
                 -- end
             end
 
-            local lspconfig = require("lspconfig")
-
             local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
             local capabilities = cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -143,7 +141,7 @@ return {
             -- 	capabilities = capabilities,
             -- })
 
-            lspconfig.clangd.setup({
+            vim.lsp.config('clangd', {
                 on_attach = on_attach,
                 capabilities = capabilities,
                 -- temporal solution for null-ls (multiple LSP with differente encoding)
@@ -153,7 +151,7 @@ return {
 
             -- default
 
-            lspconfig.bashls.setup({
+            vim.lsp.config('bashls', {
                 capabilities = capabilities,
                 on_attach = on_attach,
                 lsp_flags = lsp_flags,
@@ -162,7 +160,7 @@ return {
             -- 	capabilities = capabilities,
             -- 	on_attach = on_attach,
             -- })
-            lspconfig.cssls.setup({
+            vim.lsp.config('cssls', {
                 capabilities = capabilities,
                 on_attach = on_attach,
                 lsp_flags = lsp_flags,
@@ -183,7 +181,7 @@ return {
             -- 	capabilities = capabilities,
             -- 	on_attach = on_attach,
             -- })
-            lspconfig.html.setup({
+            vim.lsp.config('html', {
                 capabilities = capabilities,
                 on_attach = on_attach,
                 lsp_flags = lsp_flags,
@@ -192,12 +190,12 @@ return {
             -- 	capabilities = capabilities,
             -- 	on_attach = on_attach,
             -- })
-            lspconfig.jsonls.setup({
+            vim.lsp.config('jsonls', {
                 capabilities = capabilities,
                 on_attach = on_attach,
                 lsp_flags = lsp_flags,
             })
-            lspconfig.lemminx.setup({
+            vim.lsp.config('lemminx', {
                 capabilities = capabilities,
                 on_attach = on_attach,
                 lsp_flags = lsp_flags,
@@ -207,7 +205,7 @@ return {
             -- 	on_attach = on_attach,
             -- })
 
-            lspconfig.lua_ls.setup({
+            vim.lsp.config('lua_ls', {
                 capabilities = capabilities,
                 on_attach = on_attach,
                 settings = {
@@ -264,7 +262,7 @@ return {
             --     },
             -- })
 
-            lspconfig.emmet_ls.setup({
+            vim.lsp.config('emmet_ls', {
                 on_attach = on_attach,
                 capabilities = capabilities,
                 filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less" },
@@ -279,27 +277,27 @@ return {
                 lsp_flags = lsp_flags,
             })
 
-            lspconfig.texlab.setup({
+            vim.lsp.config('texlab', {
                 on_attach = on_attach,
                 capabilities = capabilities,
                 lsp_flags = lsp_flags,
             })
 
             --------- RUST LSP ------------
-            local rt = require("rust-tools")
+            -- local rt = require("rust-tools")
 
-            rt.setup({
-                server = {
-                    on_attach = function(_, bufnr)
-                        -- Hover actions
-                        vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
-                        -- Code action groups
-                        vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
-                    end,
-                },
-            })
+            -- rt.setup({
+            --     server = {
+            --         on_attach = function(_, bufnr)
+            --             -- Hover actions
+            --             vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+            --             -- Code action groups
+            --             vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+            --         end,
+            --     },
+            -- })
 
-            lspconfig.pyright.setup({
+            vim.lsp.config('pyright', {
                 on_attach = function(client, bufnr)
                     on_attach(client, bufnr)
                     -- 'Organize imports' keymap for pyright only
@@ -326,36 +324,36 @@ return {
                 },
             })
 
-            lspconfig.yamlls.setup({
+            vim.lsp.config('yamlls', {
                 on_attach = on_attach,
                 capabilities = capabilities,
                 lsp_flags = lsp_flags,
             })
 
-            lspconfig.perlnavigator.setup({
+            vim.lsp.config('perlnavigator', {
                 on_attach = on_attach,
                 capabilities = capabilities,
                 lsp_flags = lsp_flags,
             })
 
             -- TODO: check https://github.com/mfussenegger/nvim-jdtls seems it has more custom commands and features
-            lspconfig.jdtls.setup({
+            vim.lsp.config('jdtls', {
                 on_attach = on_attach,
                 capabilities = capabilities,
                 lsp_flags = lsp_flags,
             })
 
-            lspconfig.kotlin_language_server.setup({})
+            vim.lsp.config('kotlin_language_server', {})
 
             -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#angularls
-            lspconfig.angularls.setup({})
+            vim.lsp.config('angularls', {})
 
             -- vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
 
             -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#csharp_ls
             -- lspconfig.csharp_ls.setup{}
 
-            require("lspconfig").tailwindcss.setup({
+            vim.lsp.config('tailwindcss', {
                 settings = {
                     tailwindCSS = {
                         experimental = {
