@@ -15,7 +15,8 @@ M.sources = {
         --     return require("cmp").lsp.CompletionItemKind.Text ~= entry:get_kind()
         -- end,
         entry_filter = function(entry, ctx)
-            return require("cmp.types").lsp.CompletionItemKind[entry:get_kind()] ~= "Text"
+            return require("cmp.types").lsp.CompletionItemKind[entry:get_kind()]
+                ~= "Text"
         end,
         -- priority = 200,
         -- max_item_count = 10,

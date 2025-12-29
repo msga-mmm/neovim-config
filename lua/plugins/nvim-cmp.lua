@@ -57,11 +57,15 @@ return {
 
         require("config.nvim-cmp.cmdline")
 
-        local presentAutopairs, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
+        local presentAutopairs, cmp_autopairs =
+            pcall(require, "nvim-autopairs.completion.cmp")
         if not presentAutopairs then
             return
         end
 
-        cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
+        cmp.event:on(
+            "confirm_done",
+            cmp_autopairs.on_confirm_done({ map_char = { tex = "" } })
+        )
     end,
 }

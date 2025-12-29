@@ -1,3 +1,3 @@
 return {
-    "ruifm/gitlinker.nvim"
+    "ruifm/gitlinker.nvim",
 }

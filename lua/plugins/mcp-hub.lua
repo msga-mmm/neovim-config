@@ -3,7 +3,7 @@ return {
     dependencies = {
         "nvim-lua/plenary.nvim",
     },
-    build = 'bundled_build.lua',
+    build = "bundled_build.lua",
     config = function()
         -- if mcphub shows an error when trying to open it, try deleting: ~/.local/state/mcp-hub
         -- require("mcphub").setup({
