@@ -53,7 +53,9 @@ return {
                         mappings = {
                             i = {
                                 ["<C-k>"] = lga_actions.quote_prompt(),
-                                ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+                                ["<C-i>"] = lga_actions.quote_prompt({
+                                    postfix = " --iglob ",
+                                }),
                             },
                         },
                     },
@@ -61,7 +63,14 @@ return {
                 pickers = {
                     find_files = {
                         hidden = true,
-                        find_command = { "fd", "--type", "f", "--hidden", "--exclude", ".git" },
+                        find_command = {
+                            "fd",
+                            "--type",
+                            "f",
+                            "--hidden",
+                            "--exclude",
+                            ".git",
+                        },
                     },
                 },
             })

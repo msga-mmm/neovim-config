@@ -205,8 +205,10 @@ return {
         -- },
 
         system_prompt = function()
-            local prompt_path = debug.getinfo(1, "S").source:sub(2):match("(.*/)")
-            local system_prompt = read_file(prompt_path .. "./prompts/system_prompt.md")
+            local prompt_path =
+                debug.getinfo(1, "S").source:sub(2):match("(.*/)")
+            local system_prompt =
+                read_file(prompt_path .. "./prompts/system_prompt.md")
             return system_prompt
         end,
 

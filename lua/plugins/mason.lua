@@ -109,7 +109,9 @@ return {
 
             local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
-            local capabilities = cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
+            local capabilities = cmp_nvim_lsp.default_capabilities(
+                vim.lsp.protocol.make_client_capabilities()
+            )
             -- https://stackoverflow.com/questions/74576485/import-detection-error-with-neovim-lsp-and-tsserver
             -- capabilities.textDocument.completion.completionItem = {
             --   documentationFormat = { "markdown", "plaintext" },
@@ -141,7 +143,7 @@ return {
             -- 	capabilities = capabilities,
             -- })
 
-            vim.lsp.config('clangd', {
+            vim.lsp.config("clangd", {
                 on_attach = on_attach,
                 capabilities = capabilities,
                 -- temporal solution for null-ls (multiple LSP with differente encoding)
@@ -151,7 +153,7 @@ return {
 
             -- default
 
-            vim.lsp.config('bashls', {
+            vim.lsp.config("bashls", {
                 capabilities = capabilities,
                 on_attach = on_attach,
                 lsp_flags = lsp_flags,
@@ -160,7 +162,7 @@ return {
             -- 	capabilities = capabilities,
             -- 	on_attach = on_attach,
             -- })
-            vim.lsp.config('cssls', {
+            vim.lsp.config("cssls", {
                 capabilities = capabilities,
                 on_attach = on_attach,
                 lsp_flags = lsp_flags,
@@ -181,7 +183,7 @@ return {
             -- 	capabilities = capabilities,
             -- 	on_attach = on_attach,
             -- })
-            vim.lsp.config('html', {
+            vim.lsp.config("html", {
                 capabilities = capabilities,
                 on_attach = on_attach,
                 lsp_flags = lsp_flags,
@@ -190,12 +192,12 @@ return {
             -- 	capabilities = capabilities,
             -- 	on_attach = on_attach,
             -- })
-            vim.lsp.config('jsonls', {
+            vim.lsp.config("jsonls", {
                 capabilities = capabilities,
                 on_attach = on_attach,
                 lsp_flags = lsp_flags,
             })
-            vim.lsp.config('lemminx', {
+            vim.lsp.config("lemminx", {
                 capabilities = capabilities,
                 on_attach = on_attach,
                 lsp_flags = lsp_flags,
@@ -205,7 +207,7 @@ return {
             -- 	on_attach = on_attach,
             -- })
 
-            vim.lsp.config('lua_ls', {
+            vim.lsp.config("lua_ls", {
                 capabilities = capabilities,
                 on_attach = on_attach,
                 settings = {
@@ -262,10 +264,18 @@ return {
             --     },
             -- })
 
-            vim.lsp.config('emmet_ls', {
+            vim.lsp.config("emmet_ls", {
                 on_attach = on_attach,
                 capabilities = capabilities,
-                filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less" },
+                filetypes = {
+                    "html",
+                    "typescriptreact",
+                    "javascriptreact",
+                    "css",
+                    "sass",
+                    "scss",
+                    "less",
+                },
                 init_options = {
                     html = {
                         options = {
@@ -277,7 +287,7 @@ return {
                 lsp_flags = lsp_flags,
             })
 
-            vim.lsp.config('texlab', {
+            vim.lsp.config("texlab", {
                 on_attach = on_attach,
                 capabilities = capabilities,
                 lsp_flags = lsp_flags,
@@ -297,15 +307,20 @@ return {
             --     },
             -- })
 
-            vim.lsp.config('pyright', {
+            vim.lsp.config("pyright", {
                 on_attach = function(client, bufnr)
                     on_attach(client, bufnr)
                     -- 'Organize imports' keymap for pyright only
-                    vim.keymap.set("n", "<Leader>ii", "<cmd>PyrightOrganizeImports<CR>", {
-                        buffer = bufnr,
-                        silent = true,
-                        noremap = true,
-                    })
+                    vim.keymap.set(
+                        "n",
+                        "<Leader>ii",
+                        "<cmd>PyrightOrganizeImports<CR>",
+                        {
+                            buffer = bufnr,
+                            silent = true,
+                            noremap = true,
+                        }
+                    )
                 end,
                 settings = {
                     python = {
@@ -324,41 +339,44 @@ return {
                 },
             })
 
-            vim.lsp.config('yamlls', {
+            vim.lsp.config("yamlls", {
                 on_attach = on_attach,
                 capabilities = capabilities,
                 lsp_flags = lsp_flags,
             })
 
-            vim.lsp.config('perlnavigator', {
+            vim.lsp.config("perlnavigator", {
                 on_attach = on_attach,
                 capabilities = capabilities,
                 lsp_flags = lsp_flags,
             })
 
             -- TODO: check https://github.com/mfussenegger/nvim-jdtls seems it has more custom commands and features
-            vim.lsp.config('jdtls', {
+            vim.lsp.config("jdtls", {
                 on_attach = on_attach,
                 capabilities = capabilities,
                 lsp_flags = lsp_flags,
             })
 
-            vim.lsp.config('kotlin_language_server', {})
+            vim.lsp.config("kotlin_language_server", {})
 
             -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#angularls
-            vim.lsp.config('angularls', {})
+            vim.lsp.config("angularls", {})
 
             -- vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
 
             -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#csharp_ls
             -- lspconfig.csharp_ls.setup{}
 
-            vim.lsp.config('tailwindcss', {
+            vim.lsp.config("tailwindcss", {
                 settings = {
                     tailwindCSS = {
                         experimental = {
                             classRegex = {
-                                { "tv\\((([^()]*|\\([^()]*\\))*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+                                {
+                                    "tv\\((([^()]*|\\([^()]*\\))*)\\)",
+                                    "[\"'`]([^\"'`]*).*?[\"'`]",
+                                },
                             },
                         },
                     },

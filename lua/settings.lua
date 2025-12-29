@@ -40,29 +40,29 @@ vim.cmd("set wrap linebreak")
 
 -- disable some builtin vim plugins
 local disabled_built_ins = {
-	"2html_plugin",
-	"getscript",
-	"getscriptPlugin",
-	"gzip",
-	"logipat",
-	"netrw",
-	"netrwPlugin",
-	"netrwSettings",
-	"netrwFileHandlers",
-	"matchit",
-	"tar",
-	"tarPlugin",
-	"rrhelper",
-	"remove_plugins",
-	"spellfile_plugin",
-	"vimball",
-	"vimballPlugin",
-	"zip",
-	"zipPlugin",
+    "2html_plugin",
+    "getscript",
+    "getscriptPlugin",
+    "gzip",
+    "logipat",
+    "netrw",
+    "netrwPlugin",
+    "netrwSettings",
+    "netrwFileHandlers",
+    "matchit",
+    "tar",
+    "tarPlugin",
+    "rrhelper",
+    "remove_plugins",
+    "spellfile_plugin",
+    "vimball",
+    "vimballPlugin",
+    "zip",
+    "zipPlugin",
 }
 
 for _, plugin in pairs(disabled_built_ins) do
-	g["loaded_" .. plugin] = 1
+    g["loaded_" .. plugin] = 1
 end
 
 vim.cmd([[
@@ -73,17 +73,17 @@ vim.cmd([[
 ]])
 
 LazyStart = vim.loop.new_async(vim.schedule_wrap(function()
-	vim.defer_fn(function()
-		-- @deprecated: remove them
-		-- filetype plugin indent on
-		-- filetype on
+    vim.defer_fn(function()
+        -- @deprecated: remove them
+        -- filetype plugin indent on
+        -- filetype on
 
-		vim.cmd([[
+        vim.cmd([[
             syntax on
         ]])
-	end, 1)
+    end, 1)
 
-	LazyStart:close()
+    LazyStart:close()
 end))
 
 LazyStart:send()

@@ -52,7 +52,7 @@ function M.require(package)
             after = function(callback)
                 table.insert(Setter.callbacks, callback)
                 return Setter
-            end
+            end,
         }
     end
 

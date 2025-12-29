@@ -16,18 +16,18 @@ luasnip.config.set_config({
 })
 
 luasnip.add_snippets("javascript", {
-	luasnip.snippet("log", {
-		-- Simple static text.
-		-- function, first parameter is the function, second the Placeholders
-		-- whose text it gets as input.
-		f(copy, 2),
-		t({ "", "console.log(" }),
-		-- Placeholder/Insert.
-		i(1),
-		t(""),
-		-- Linebreak
-		t({ ")" }),
-	}),
+    luasnip.snippet("log", {
+        -- Simple static text.
+        -- function, first parameter is the function, second the Placeholders
+        -- whose text it gets as input.
+        f(copy, 2),
+        t({ "", "console.log(" }),
+        -- Placeholder/Insert.
+        i(1),
+        t(""),
+        -- Linebreak
+        t({ ")" }),
+    }),
 })
 
 require("luasnip.loaders.from_vscode").lazy_load()
