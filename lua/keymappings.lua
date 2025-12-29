@@ -90,7 +90,11 @@ map("n", "<A-g>", "Telescope grep_string")
 map(
     "n",
     "<Space>l",
-    "lua require('telescope').extensions.live_grep_args.live_grep_args({ additional_args = function() return { '--hidden', '--glob', '!.git/' } end })"
+    "lua require('telescope').extensions.live_grep_args.live_grep_args({"
+        .. " additional_args = function()"
+        .. " return { '--hidden', '--glob', '!.git/' }"
+        .. " end"
+        .. " })"
 )
 -- map("n", "<Space>l", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 -- map("n", "<Space>l", "Telescope live_grep")

@@ -14,7 +14,7 @@ M.sources = {
         -- entry_filter = function(entry, ctx)
         --     return require("cmp").lsp.CompletionItemKind.Text ~= entry:get_kind()
         -- end,
-        entry_filter = function(entry, ctx)
+        entry_filter = function(entry, _ctx)
             return require("cmp.types").lsp.CompletionItemKind[entry:get_kind()]
                 ~= "Text"
         end,

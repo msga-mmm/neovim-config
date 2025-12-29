@@ -8,7 +8,6 @@ return {
         config = function()
             local actions = require("telescope.actions")
             local action_state = require("telescope.actions.state")
-            local action_set = require("telescope.actions.set")
             local lga_actions = require("telescope-live-grep-args.actions")
 
             -- Custom action to open file in new tab without closing Telescope

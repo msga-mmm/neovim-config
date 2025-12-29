@@ -1,6 +1,8 @@
 local scopes = { o = vim.o, b = vim.bo, w = vim.wo }
 
-local utils = {}
+local utils = {
+    scopes = scopes,
+}
 
 function utils.opt(scope, key, value)
     scopes[scope][key] = value

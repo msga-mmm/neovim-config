@@ -35,7 +35,13 @@ return {
             enabled = false,
             first_provider = "gemini",
             second_provider = "gemini",
-            prompt = "Based on the two reference outputs below, generate a response that incorporates elements from both but reflects your own judgment and unique perspective. Do not provide any explanation, just give the response directly. Reference Output 1: [{{provider1_output}}], Reference Output 2: [{{provider2_output}}]",
+            prompt = table.concat({
+                "Based on the two reference outputs below, generate a response that",
+                "incorporates elements from both but reflects your own judgment and unique perspective.",
+                "Do not provide any explanation, just give the response directly.",
+                "Reference Output 1: [{{provider1_output}}],",
+                "Reference Output 2: [{{provider2_output}}]",
+            }, " "),
             timeout = 60000,
         },
 
@@ -193,7 +199,8 @@ return {
         -- },
 
         -- NOTE: this requires environment variable: TAVILY_API_KEY
-        -- documentation: https://github.com/yetone/avante.nvim/blob/be0937a459624ce1170f158f9d8660d0ade47eb4/README.md#L1133
+        -- documentation:
+        -- https://github.com/yetone/avante.nvim/blob/be0937a459624ce1170f158f9d8660d0ade47eb4/README.md#L1133
         web_search_engine = {
             provider = "tavily", -- tavily, serpapi, google, kagi, brave, or searxng
             proxy = nil, -- proxy support, e.g., http://127.0.0.1:7890
@@ -216,14 +223,32 @@ return {
             {
                 name = "commit",
                 description = "Create Git commit following conventional commits",
-                details = "Generate a descriptive Git commit message that follows the Conventional Commits specification, based on the recent changes in the code.",
-                prompt = "Please generate a Git commit message following the Conventional Commits specification, describing the recent changes clearly and concisely.",
+                details = table.concat({
+                    "Generate a descriptive Git commit message that follows the Conventional Commits",
+                    "specification, based on the recent changes in the code.",
+                }, " "),
+                prompt = table.concat({
+                    "Please generate a Git commit message following the Conventional Commits",
+                    "specification, describing the recent changes clearly and concisely.",
+                }, " "),
             },
             {
                 name = "review",
                 description = "Review current branch against main for good practices, edge cases, and vulnerabilities",
-                details = "Perform a comprehensive code review of the current branch compared to the `main` branch. Focus on identifying areas that violate good practices (language, framework, and package specific), potential edge cases, unhandled errors, possible bugs, and critical security vulnerabilities.",
-                prompt = "Please conduct a thorough code review of the current branch against the `main` branch. Identify any deviations from good practices for the specific language, framework, and packages used. Highlight potential edge cases, unhandled errors, possible bugs, and critical security vulnerabilities. Provide actionable suggestions for improvement.",
+                details = table.concat({
+                    "Perform a comprehensive code review of the current branch compared to the `main` branch.",
+                    "Focus on identifying areas that violate good practices",
+                    "(language, framework, and package specific), potential edge cases,",
+                    "unhandled errors, possible bugs, and critical security vulnerabilities.",
+                }, " "),
+                prompt = table.concat({
+                    "Please conduct a thorough code review of the current branch against the `main` branch.",
+                    "Identify any deviations from good practices for the specific language,",
+                    "framework, and packages used.",
+                    "Highlight potential edge cases, unhandled errors, possible bugs,",
+                    "and critical security vulnerabilities.",
+                    "Provide actionable suggestions for improvement.",
+                }, " "),
             },
         },
     },
@@ -232,9 +257,12 @@ return {
     --     -- rag_service = {
     --     --     enabled = true,                        -- Enables the RAG service
     --     --     host_mount = os.getenv("HOME"),         -- Host mount path for the rag service
-    --     --     provider = "deepinfra",                    -- The provider to use for RAG service (e.g. openai or ollama)
-    --     --     llm_model = "meta-llama/Llama-3.3-70B-Instruct-Turbo",                         -- The LLM model to use for RAG service
-    --     --     embed_model = "BAAI/bge-base-en-v1.5",                       -- The embedding model to use for RAG service
+    --     --     provider = "deepinfra",
+    --     --     -- The provider to use for RAG service (e.g. openai or ollama)
+    --     --     llm_model = "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+    --     --     -- The LLM model to use for RAG service
+    --     --     embed_model = "BAAI/bge-base-en-v1.5",
+    --     --     -- The embedding model to use for RAG service
     --     --     endpoint = "https://api.deepinfra.com/v1/openai", -- The API endpoint for RAG service
     --     -- },
     -- },

@@ -38,7 +38,7 @@ function M.require(package)
     end
 
     ---@param opts table|nil
-    function Setter:setup(opts)
+    function Setter.setup(_self, opts)
         return {
             run = function()
                 if status_ok then
@@ -56,7 +56,7 @@ function M.require(package)
         }
     end
 
-    function Setter:run()
+    function Setter.run(_self)
         if status_ok then
             setter.setup()
 

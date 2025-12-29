@@ -17,7 +17,7 @@ return {
             },
             jestCommand = "npx jest",
             jestConfigFile = "package.json",
-            cwd = function(path)
+            cwd = function(_path)
                 return vim.fn.getcwd()
             end,
         })

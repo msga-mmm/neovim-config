@@ -72,7 +72,9 @@ vim.cmd([[
     set shm+=I
 ]])
 
-LazyStart = vim.loop.new_async(vim.schedule_wrap(function()
+local lazy_start
+
+lazy_start = vim.loop.new_async(vim.schedule_wrap(function()
     vim.defer_fn(function()
         -- @deprecated: remove them
         -- filetype plugin indent on
@@ -83,7 +85,7 @@ LazyStart = vim.loop.new_async(vim.schedule_wrap(function()
         ]])
     end, 1)
 
-    LazyStart:close()
+    lazy_start:close()
 end))
 
-LazyStart:send()
+lazy_start:send()
