@@ -11,17 +11,17 @@ return {
             "mfussenegger/nvim-dap",
         },
     },
-    {
-        "mxsdev/nvim-dap-vscode-js",
-    },
+    -- {
+    --     "mxsdev/nvim-dap-vscode-js",
+    -- },
     {
         "sindrets/diffview.nvim",
         dependencies = {
             "nvim-lua/plenary.nvim",
         },
     },
-    {
-        "microsoft/vscode-js-debug",
-        build = "npm install --legacy-peer-deps && npm run compile",
-    },
+    -- {
+    --     "microsoft/vscode-js-debug",
+    --     build = "npm install --legacy-peer-deps && npm run compile",
+    -- },
 }
