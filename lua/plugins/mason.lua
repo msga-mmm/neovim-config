@@ -35,7 +35,7 @@ return {
         },
         config = function()
             local null_ls = require("null-ls")
-            local cspell = require("cspell")
+            require("cspell")
 
             require("null-ls").setup({
                 sources = {
@@ -90,10 +90,8 @@ return {
         },
         config = function()
             -- if you want to set up formatting on save, you can use this as a callback
-            local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-
             -- add to your shared on_attach callback
-            local on_attach = function(client, bufnr)
+            local on_attach = function(_client, _bufnr)
                 -- if client.supports_method("textDocument/formatting") then
                 -- 	vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
                 -- 	vim.api.nvim_create_autocmd("BufWritePre", {
@@ -279,7 +277,8 @@ return {
                 init_options = {
                     html = {
                         options = {
-                            -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+                            -- For possible options, see:
+                            -- https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
                             ["bem.enabled"] = true,
                         },
                     },

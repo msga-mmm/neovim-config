@@ -31,8 +31,6 @@ return {
         --------------------------
 
         vim.opt.termguicolors = true
-        local ccc = require("ccc")
-        local mapping = ccc.mapping
         local utils = require("utils")
         local map = utils.map
         map("n", "<leader>cc", "CccHighlighterEnable", {})
