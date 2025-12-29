@@ -173,3 +173,24 @@ base_map("n", "tn", ":TestNearest<CR>", opts)
 -- map("n", "tf", 'lua require("neotest").run.run(vim.fn.expand("%"))', opts)
 
 base_map("n", "<leader>oo", ":<c-u>lua require('ollama').prompt()<cr>", opts)
+
+
+-- Copy path relative to git root
+vim.keymap.set("n", "<Space>gp", function()
+  local git_root = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
+  if not git_root or git_root == '' then
+    print("Not inside a git repo")
+    return
+  end
+
+  local file = vim.fn.expand("%:p")
+
+  -- Escape git_root for Lua pattern matching
+  local escaped_root = vim.pesc(git_root .. "/")
+
+  -- Remove the git root prefix
+  local rel = string.gsub(file, "^" .. escaped_root, "")
+
+  vim.fn.setreg("+", rel)
+  print("Copied: " .. rel)
+end, { desc = "Copy git-root relative path" })
