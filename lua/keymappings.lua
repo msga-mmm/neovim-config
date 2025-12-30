@@ -91,8 +91,9 @@ map(
     "n",
     "<Space>l",
     "lua require('telescope').extensions.live_grep_args.live_grep_args({"
+        .. " debounce = 150,"
         .. " additional_args = function()"
-        .. " return { '--hidden', '--glob', '!.git/' }"
+        .. " return { '--hidden', '--glob', '!.git/', '--max-filesize', '2M' }"
         .. " end"
         .. " })"
 )
