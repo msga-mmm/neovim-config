@@ -93,7 +93,7 @@ map(
     "lua require('telescope').extensions.live_grep_args.live_grep_args({"
         .. " debounce = 150,"
         .. " additional_args = function()"
-        .. " return { '--hidden', '--glob', '!.git/', '--max-filesize', '2M' }"
+        .. " return { '--hidden', '--glob', '!**/.git/**', '--glob', '!**/node_modules/**', '--glob', '!**/dist/**', '--glob', '!**/static/bundles/**', '--glob', '!*.min.js', '--glob', '!*.pack.js', '--max-filesize', '2M' }"
         .. " end"
         .. " })"
 )
