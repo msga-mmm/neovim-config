@@ -184,6 +184,15 @@ base_map("n", "tn", ":TestNearest<CR>", opts)
 
 base_map("n", "<leader>oo", ":<c-u>lua require('ollama').prompt()<cr>", opts)
 
+
+vim.keymap.set("n", "<leader>gy", "<cmd>GitPermalinkCopy<CR>", {
+    desc = "Copy git permalink for file",
+})
+
+vim.keymap.set("x", "<leader>gy", ":GitPermalinkCopy<CR>", {
+    desc = "Copy git permalink for selection",
+})
+
 -- Copy path relative to git root
 vim.keymap.set("n", "<Space>gp", function()
     local git_root = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
