@@ -194,11 +194,12 @@ vim.keymap.set("n", "<Space>gp", function()
 
     local file = vim.fn.expand("%:p")
 
-    -- Escape git_root for Lua pattern matching
-    local escaped_root = vim.pesc(git_root .. "/")
+    -- Make both paths absolute + normalized
+    git_root = vim.fn.fnamemodify(git_root, ":p")
+    file = vim.fn.fnamemodify(file, ":p")
 
-    -- Remove the git root prefix
-    local rel = string.gsub(file, "^" .. escaped_root, "")
+    -- Compute relative path safely
+    local rel = vim.fn.fnamemodify(file, ":." .. git_root)
 
     vim.fn.setreg("+", rel)
     print("Copied: " .. rel)
