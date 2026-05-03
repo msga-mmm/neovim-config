@@ -1,3 +1,7 @@
 .nvim
 plugin
 spell
+
+# Logs
+.nvimlog
+nvim.log

@@ -14,7 +14,7 @@ return {
         dependencies = { "williamboman/mason.nvim" },
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "ts_ls" },
+                ensure_installed = { "ts_ls", "jsonls", "pyright" },
                 automatic_installation = true,
             })
         end,
@@ -23,7 +23,10 @@ return {
         "jay-babu/mason-null-ls.nvim",
         config = function()
             require("mason-null-ls").setup({
-                ensure_installed = nil,
+                ensure_installed = {
+                    "jq",
+                    "sqlformat",
+                },
                 automatic_installation = true,
             })
         end,
@@ -33,6 +36,7 @@ return {
         dependencies = {
             "nvim-lua/plenary.nvim",
             "davidmh/cspell.nvim",
+            "nvimtools/none-ls-extras.nvim",
         },
         config = function()
             local null_ls = require("null-ls")
@@ -55,6 +59,8 @@ return {
                     -- be fixed by running prettier in all the files
                     -- null_ls.builtins.formatting.prettierd,
                     null_ls.builtins.formatting.black,
+                    require("none-ls.formatting.jq"),
+                    null_ls.builtins.formatting.sqlformat,
 
                     null_ls.builtins.diagnostics.tidy,
 
@@ -338,6 +344,7 @@ return {
                     },
                 },
             })
+            vim.lsp.enable("pyright")
 
             vim.lsp.config("yamlls", {
                 on_attach = on_attach,

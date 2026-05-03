@@ -1,57 +1,47 @@
 return {
     "nvim-treesitter/nvim-treesitter",
-    -- TODO: uncomment
-    -- build = ":TSUpdate",
-    dependencies = {
-        "nvim-treesitter/nvim-treesitter-refactor",
-        "RRethy/nvim-treesitter-textsubjects",
-    },
+    build = ":TSUpdate",
     config = function()
-        require("nvim-treesitter.configs").setup({
-            ensure_installed = {
-                "bash",
-                "angular",
-                "c",
-                "cpp",
-                "c_sharp",
-                "css",
-                "dockerfile",
-                "html",
-                "java",
-                "javascript",
-                "json",
-                "kotlin",
-                "objc",
-                "python",
-                "rust",
-                "scss",
-                "terraform",
-                "typescript",
-                "yaml",
-                "tsx",
-            },
-            auto_install = true,
-            highlight = {
-                enable = true,
-                additional_vim_regex_highlighting = false,
-            },
-            indent = {
-                -- temporally disable: it's still on beta (not good auto-indentation sometimes)
-                enable = true,
-            },
-            autotag = {
-                enable = true,
-            },
-            rainbow = {
-                enable = true,
-                extended_mode = true,
-                max_file_lines = 1500, -- nil (unlimited), 1500 to avoid crashing in big files
-            },
+        local treesitter = require("nvim-treesitter")
+        treesitter.setup({
+            install_dir = vim.fn.stdpath("data") .. "/site",
+        })
+        treesitter.install({
+            "bash",
+            "css",
+            "html",
+            "javascript",
+            "json",
+            "lua",
+            "markdown",
+            "markdown_inline",
+            "query",
+            "tsx",
+            "typescript",
+            "vim",
+            "vimdoc",
+            "python",
+            "yaml",
+            "make",
         })
 
-        -- vim.cmd [[
-        -- set foldmethod=expr
-        -- set foldexpr=nvim_treesitter#foldexpr()
-        -- ]]
+        vim.api.nvim_create_autocmd("FileType", {
+            callback = function()
+                local filetype = vim.bo.filetype
+                local buftype = vim.bo.buftype
+
+                if buftype ~= "" or filetype == "NvimTree" then
+                    return
+                end
+
+                local ok = pcall(vim.treesitter.start)
+                if not ok then
+                    return
+                end
+
+                vim.bo.indentexpr =
+                    "v:lua.require'nvim-treesitter'.indentexpr()"
+            end,
+        })
     end,
 }
