@@ -76,9 +76,10 @@ local lazy_start
 
 lazy_start = vim.loop.new_async(vim.schedule_wrap(function()
     vim.defer_fn(function()
-        -- @deprecated: remove them
-        -- filetype plugin indent on
-        -- filetype on
+        vim.cmd([[
+            filetype plugin indent on
+            filetype on
+        ]])
 
         vim.cmd([[
             syntax on
