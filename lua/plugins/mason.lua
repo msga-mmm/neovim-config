@@ -24,8 +24,11 @@ return {
         config = function()
             require("mason-null-ls").setup({
                 ensure_installed = {
+                    "black",
                     "jq",
-                    "sqlformat",
+                    "stylua",
+                    "yamlfmt",
+                    "sql_formatter",
                 },
                 automatic_installation = true,
             })
@@ -60,7 +63,7 @@ return {
                     -- null_ls.builtins.formatting.prettierd,
                     null_ls.builtins.formatting.black,
                     require("none-ls.formatting.jq"),
-                    null_ls.builtins.formatting.sqlformat,
+                    null_ls.builtins.formatting.sql_formatter,
 
                     null_ls.builtins.diagnostics.tidy,
 
