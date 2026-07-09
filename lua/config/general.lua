@@ -73,6 +73,7 @@ vim.cmd([[
 vim.cmd([[
     let g:mkdp_filetypes = [ "markdown" ]
     let g:mkdp_echo_preview_url = 1
+    let g:mkdp_browser = 'firefox'
 ]])
 
 -- views can only be fully collapsed with the global statusline
